@@ -50,6 +50,7 @@ export default class ShortInput extends Component {
         <TextField
           id={this.props.id + "123123"}
           style={styles.input}
+          inputStyle={styles.inputStyle}
           onChange={(e, text) => this.props.registerSelection(this.props.id, {text})}
         />
       </div>
@@ -67,6 +68,11 @@ const styles = {
 
   input: {
     width: 400
+  },
+
+  inputStyle: {
+    color:'#FFF',
+    fontSize: 18
   },
 
   selectionContainer: {

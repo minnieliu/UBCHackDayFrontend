@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import { RaisedButton, Checkbox } from 'material-ui';
+import Accessibility from 'material-ui/svg-icons/action/accessibility';
 import HardwareVideogameAsset from 'material-ui/svg-icons/hardware/videogame-asset';
+import LocalCafe from 'material-ui/svg-icons/maps/local-cafe';
+import Casino from 'material-ui/svg-icons/places/casino';
+import Group from 'material-ui/svg-icons/social/group';
+import School from 'material-ui/svg-icons/social/school';
+import GTranslate from 'material-ui/svg-icons/action/g-translate';
 
 
 const Icon = ({item}) => {
   if (item.icon === 'coffee') {
     return (
-      <HardwareVideogameAsset style={styles.iconStyles}/>
+      <LocalCafe style={styles.iconStyles}/>
     )
   }
   else if (item.icon === 'meetup') {
     return (
-      <HardwareVideogameAsset style={styles.iconStyles}/>
+      <Group style={styles.iconStyles}/>
     )
   }
   else if (item.icon === 'club') {
@@ -21,7 +27,12 @@ const Icon = ({item}) => {
   }
   else if (item.icon === 'boardgames') {
     return (
-      <HardwareVideogameAsset style={styles.iconStyles}/>
+      <Casino style={styles.iconStyles}/>
+    )
+  }
+  else if (item.icon === 'study') {
+    return (
+      <Casino style={styles.iconStyles}/>
     )
   }
 };
@@ -37,12 +48,8 @@ export default class IconSelect extends Component {
     this.onSelect = this.onSelect.bind(this);
   }
   onClick(item, isChecked) {
-    console.log('it is ', this.props.id,  item);
     this.props.registerSelection(this.props.id, item);
     this.setState({ selection: item });
-    // if (isChecked) {
-    //   this.setState({ selection: item });
-    // }
   }
   onSelect() {
     this.props.onSelectQuestion(this.props.id);
@@ -77,8 +84,8 @@ const styles = {
   },
 
   selectionContainer: {
-    border: '1px solid blue',
-    backgroundColor:'#81ffe7',
+    margin: 5,
+    backgroundColor:'#f37f1e',
     padding:12,
     display: 'flex',
     alignItems: 'center',

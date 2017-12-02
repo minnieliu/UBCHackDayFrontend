@@ -28,15 +28,12 @@ export default class Routes extends Component {
   }
 
   handleSubmit() {
-    fetch('/users', {
+    fetch('https://ervrvrer.com.erfrehf', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        name: 'Hubot',
-        login: 'hubot',
-      })
+      body: JSON.stringify(this.state)
     });
     // send state to server
     console.log('entire submission is ', this.state);
