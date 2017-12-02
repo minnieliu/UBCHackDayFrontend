@@ -4,7 +4,8 @@ import Routes from './routes';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import 'whatwg-fetch';
 
-class App extends Component {
+
+class App extends Component  {
   render() {
     return (
       <MuiThemeProvider>
