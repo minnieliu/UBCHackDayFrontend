@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Webcam from 'react-webcam';
+import { RaisedButton } from 'material-ui';
+
 
 class Camera extends React.Component {
 
@@ -21,19 +23,30 @@ class Camera extends React.Component {
 
               };
 
+             scrollToBottom = () => {
+                 this.state.screenshot.scrollIntoView({ behavior: "smooth" });
+             }
+
               render() {
                   return (
-                      <div>
+                      <div style={styles.scrollContainer}>
+                          <h1>Take a picture of how you're feeling!</h1>
                           <Webcam
                               audio={false}
-                              height={350}
+                              height={600}
                               ref={node => this.webcam = node}
                               screenshotFormat="image/jpeg"
-                              width={350}
+                              width={600}
                           />
-                          <button onClick={this.capture}>Capture photo</button>
-                          <Link to='/finish'>Finish</Link>
-                      {this.state.screenshot ? <img src={this.state.screenshot} /> : null}
+                            <RaisedButton onClick={(event) => {this.capture( function() {
+                                this.scrollToBottom()})}} >Capture photo</RaisedButton>
+
+                          {this.state.screenshot? <h1>Click finish if you are happy with this picture!</h1> : null}
+                          {this.state.screenshot ? <img src={this.state.screenshot} /> : null}
+
+                        <RaisedButton style={styles.buttonContainer}>
+                            <Link to='/finish'>Finish</Link>
+                        </RaisedButton>
                       </div>
 
 
@@ -43,3 +56,39 @@ class Camera extends React.Component {
 
 
 export default Camera;
+
+
+const styles = {
+    container: {
+        backgroundColor: '#67c2ff',
+        display: 'flex',
+        flex: 'none',
+        alignItems: 'center',
+        flexFlow: 'column',
+        height: '100%',
+        width: '100%',
+        margin: 0
+    },
+
+    scrollContainer: {
+        backgroundColor: '#67c2ff',
+        display: 'flex',
+        flex: 'none',
+        flexFlow: 'column',
+        alignItems: 'center',
+
+        color: '#FFF',
+        height: 'min-content',
+        minHeight: 1600,
+        width: '100%',
+        margin: 0
+
+    },
+
+    buttonContainer: {
+        alignItems: 'baseline',
+        margin: 20
+    }
+
+}
+
