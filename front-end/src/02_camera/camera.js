@@ -3,12 +3,22 @@ import { Link } from 'react-router-dom';
 import Webcam from 'react-webcam';
 
 class Camera extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            screenshot: null,
+            tab: 0
+        };
+    }
               setRef = (webcam) => {
                   this.webcam = webcam;
               }
 
               capture = () => {
-                  const imageSrc = this.webcam.getScreenshot();
+                  const screenshot = this.webcam.getScreenshot();
+                  this.setState({ screenshot });
+
               };
 
               render() {
@@ -23,7 +33,10 @@ class Camera extends React.Component {
                           />
                           <button onClick={this.capture}>Capture photo</button>
                           <Link to='/finish'>Finish</Link>
+                      {this.state.screenshot ? <img src={this.state.screenshot} /> : null}
                       </div>
+
+
                   );
               }
           }
