@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import routes from './routes';
+import Routes from './routes';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import 'whatwg-fetch';
 
 class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
         <div style={styles.container}>
-          {routes}
+          <Routes/>
         </div>
       </MuiThemeProvider>
     );
