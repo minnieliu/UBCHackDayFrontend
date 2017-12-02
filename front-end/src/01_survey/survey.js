@@ -9,11 +9,11 @@ const Panel = ({question, children, selected, onClick}) => (
   <div
     onClick={onClick}
     style={{
-    width: '100%',
-    height: 'min-content',
-    minHeight: 300,
-    border: '1px solid green',
-    backgroundColor: selected ? '#539dcf' : 'transparent'
+      width: '80%',
+      height: 'min-content',
+      minHeight: 200,
+      padding: '5% 20%',
+      backgroundColor: selected ? '#84cfff' : 'transparent'
   }}>
     <h2 style={{color: '#fff', width: '100%'}}>{question}</h2>
     {children}
@@ -28,11 +28,22 @@ class Answer extends Component {
     };
   }
   render() {
+    const style = {
+      color: '#FFF',
+      fill:'#FFF',
+      height: 34,
+      width: 34,
+      alignItems: 'center',
+    };
+
     return (
       <Checkbox
         checked={this.props.checked}
         onCheck={(item, isChecked) => this.props.onCheck(this.props.item, isChecked)}
         label={this.props.item.text}
+        style={{padding: 10, paddingLeft: 0}}
+        labelStyle={{color: '#FFF', fontSize: 30}}
+        iconStyle={style}
       />
     )
   }
@@ -58,7 +69,7 @@ class MultipleChoice extends Component {
   }
   render() {
     return (
-      <div style={{width: '40%'}} onClick={this.onSelect}>
+      <div style={{width: '100%'}} onClick={this.onSelect}>
         {this.props.answers.map((item) => (
           <Answer
             key={item.text}
@@ -82,7 +93,8 @@ const MOCK_ANSWERS2 = [
   {id: 0, text: 'Coffee', icon: 'coffee'},
   {id: 1, text: 'Meetup', icon: 'meetup'},
   {id: 2, text: 'Club Event', icon: 'club'},
-  {id: 3, text: 'Board Games', icon: 'boardgames'}
+  {id: 3, text: 'Board Games', icon: 'boardgames'},
+  {id: 4, text: 'Study Group', icon: 'study'}
 ];
 const SHORT_ANSWER = { text: 'example'};
 
@@ -92,8 +104,7 @@ class Survey extends Component {
     this.state = {
       currentQuestionId: -1,
       responses: {}
-    }
-    ;
+    };
     this.registerSelection = this.registerSelection.bind(this);
     this.onSelectQuestion = this.onSelectQuestion.bind(this);
   }
@@ -111,26 +122,26 @@ class Survey extends Component {
       <div style={styles.container}>
         <div style={styles.scrollContainer}>
           <h1>Tell us about you!</h1>
+          <h2 style={{width: '70%'}}>based on your answers, we will try to match you with someone who shares similar interests</h2>
 
           <Panel
             selected={this.state.currentQuestionId === 0}
-            question='I want to talk about:'
+            question='1. My name is:'
             onClick={() => this.onSelectQuestion(0)}>
-            <MultipleChoice
+            <ShortInput
               id={0}
-              answers={MOCK_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
           </Panel>
 
+
           <Panel
             selected={this.state.currentQuestionId === 1}
-            question='I want to connect over:'
+            question='2. My email is:'
             onClick={() => this.onSelectQuestion(1)}>
-            <IconSelect
+            <ShortInput
               id={1}
-              answers={MOCK_ANSWERS2}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -138,10 +149,45 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 2}
-            question='I am good at:'
+            question='3. I want to talk about:'
             onClick={() => this.onSelectQuestion(2)}>
-            <ShortInput
+            <MultipleChoice
               id={2}
+              answers={MOCK_ANSWERS}
+              registerSelection={this.registerSelection}
+              onSelectQuestion={this.onSelectQuestion}
+            />
+          </Panel>
+
+          <Panel
+            selected={this.state.currentQuestionId === 3}
+            question='2. I want to connect over:'
+            onClick={() => this.onSelectQuestion(3)}>
+            <IconSelect
+              id={3}
+              answers={MOCK_ANSWERS2}
+              registerSelection={this.registerSelection}
+              onSelectQuestion={this.onSelectQuestion}
+            />
+          </Panel>
+
+          <Panel
+            selected={this.state.currentQuestionId === 4}
+            question='3. I am good at:'
+            onClick={() => this.onSelectQuestion(4)}>
+            <ShortInput
+              id={4}
+              registerSelection={this.registerSelection}
+              onSelectQuestion={this.onSelectQuestion}
+            />
+          </Panel>
+
+          <Panel
+            selected={this.state.currentQuestionId === 5}
+            question='4. I am good at:'
+            onClick={() => this.onSelectQuestion(5)}>
+            <ShortInput
+              id={5}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -174,7 +220,6 @@ const styles = {
     padding: '0 150px',
 
     color: '#FFF',
-    border: '1px solid yellow',
     height: 'min-content',
     minHeight: 1600,
     width: '100%',
