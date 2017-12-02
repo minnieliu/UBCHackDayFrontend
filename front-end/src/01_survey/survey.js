@@ -11,7 +11,7 @@ const Panel = ({question, children, selected, onClick}) => (
     style={{
       width: '80%',
       height: 'min-content',
-      minHeight: 300,
+      minHeight: 200,
       padding: '5% 20%',
       backgroundColor: selected ? '#84cfff' : 'transparent'
   }}>
@@ -126,23 +126,22 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 0}
-            question='1. I want to talk about:'
+            question='1. My name is:'
             onClick={() => this.onSelectQuestion(0)}>
-            <MultipleChoice
+            <ShortInput
               id={0}
-              answers={MOCK_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
           </Panel>
 
+
           <Panel
             selected={this.state.currentQuestionId === 1}
-            question='2. I want to connect over:'
+            question='2. My email is:'
             onClick={() => this.onSelectQuestion(1)}>
-            <IconSelect
+            <ShortInput
               id={1}
-              answers={MOCK_ANSWERS2}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -150,10 +149,11 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 2}
-            question='3. I am good at:'
+            question='3. I want to talk about:'
             onClick={() => this.onSelectQuestion(2)}>
-            <ShortInput
+            <MultipleChoice
               id={2}
+              answers={MOCK_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -161,10 +161,33 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 3}
-            question='4. I am good at:'
+            question='2. I want to connect over:'
             onClick={() => this.onSelectQuestion(3)}>
-            <ShortInput
+            <IconSelect
               id={3}
+              answers={MOCK_ANSWERS2}
+              registerSelection={this.registerSelection}
+              onSelectQuestion={this.onSelectQuestion}
+            />
+          </Panel>
+
+          <Panel
+            selected={this.state.currentQuestionId === 4}
+            question='3. I am good at:'
+            onClick={() => this.onSelectQuestion(4)}>
+            <ShortInput
+              id={4}
+              registerSelection={this.registerSelection}
+              onSelectQuestion={this.onSelectQuestion}
+            />
+          </Panel>
+
+          <Panel
+            selected={this.state.currentQuestionId === 5}
+            question='4. I am good at:'
+            onClick={() => this.onSelectQuestion(5)}>
+            <ShortInput
+              id={5}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
