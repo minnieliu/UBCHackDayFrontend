@@ -20,12 +20,14 @@ class Camera extends React.Component {
               capture = () => {
                   const screenshot = this.webcam.getScreenshot();
                   this.setState({ screenshot });
+                 // this.props.onSave('camera', screenshot);
 
               };
 
-             scrollToBottom = () => {
-                 this.state.screenshot.scrollIntoView({ behavior: "smooth" });
-             }
+              finish = () => {
+                  this.props.onSave('camera', this.state.screenshot);
+
+              }
 
               render() {
                   return (
@@ -38,18 +40,15 @@ class Camera extends React.Component {
                               screenshotFormat="image/jpeg"
                               width={600}
                           />
-                            <RaisedButton onClick={(event) => {this.capture( function() {
-                                this.scrollToBottom()})}} >Capture photo</RaisedButton>
+                            <RaisedButton onClick={(event) => {this.capture()}}>Capture photo</RaisedButton>
 
                           {this.state.screenshot? <h1>Click finish if you are happy with this picture!</h1> : null}
                           {this.state.screenshot ? <img src={this.state.screenshot} /> : null}
 
-                        <RaisedButton style={styles.buttonContainer}>
+                        <RaisedButton style={styles.buttonContainer} onClick = {() => this.finish()}>
                             <Link to='/finish'>Finish</Link>
                         </RaisedButton>
                       </div>
-
-
                   );
               }
           }
