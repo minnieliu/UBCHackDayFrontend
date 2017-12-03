@@ -13,7 +13,7 @@ const Panel = ({question, children, selected, onClick}) => (
       height: 'min-content',
       minHeight: 200,
       padding: '5% 20%',
-      backgroundColor: selected ? '#84cfff' : 'transparent'
+      backgroundColor: selected ? '#84cfff' : '#67c2ff'
   }}>
     <h2 style={{color: '#fff', width: '100%'}}>{question}</h2>
     {children}

@@ -12,9 +12,9 @@ class Intro extends Component {
         <p style={{color: '#FFF', fontSize: 18, width: '50%'}}>
           Welcome to .... !
         </p>
-        <RaisedButton style={styles.button}>
-          <Link to='/survey'>START!</Link>
-        </RaisedButton>
+        {/*<RaisedButton style={styles.button}>*/}
+        <Link style={styles.button} to='/survey'>START!</Link>
+        {/*</RaisedButton>*/}
       </div>
     );
   }
@@ -32,7 +32,16 @@ const styles = {
     backgroundColor: '#72ff99'
   },
   button: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#7ebaff',
-    color: '#FFF'
+    color: '#FFF',
+    height: 50,
+    width: 150,
+    borderRadius: 25,
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    fontSize: 24
   }
 };
