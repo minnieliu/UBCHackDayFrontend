@@ -18,7 +18,8 @@ class Finish extends Component {
           <img src={check} alt = "check"/>
           <h2>Check your email to see who you have matched with.</h2>
 
-          <Link style={styles.button}  to='/'>Start Again</Link>
+
+          <Link style={styles.button} to='/'>Start Again</Link>
 
 
       </div>

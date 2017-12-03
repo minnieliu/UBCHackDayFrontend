@@ -132,7 +132,7 @@ class Survey extends Component {
         <div style={styles.scrollContainer}>
           <Assignment style={styles.iconStyles}/>
           <h1>Tell us about you!</h1>
-          <h2 style={{width: '70%', textAlign: 'center', marginBottom: 50}}>
+          <h2 style={{width: '70%', textAlign: 'center', marginBottom: 0}}>
             based on your answers, we will try to match you with someone who shares similar interests
           </h2>
 
