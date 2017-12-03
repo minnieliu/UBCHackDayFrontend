@@ -6,6 +6,10 @@ import { RaisedButton } from 'material-ui';
 
 class Camera extends React.Component {
 
+    componentDidMount () {
+        window.scrollTo(0, 0)
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +24,6 @@ class Camera extends React.Component {
               capture = () => {
                   const screenshot = this.webcam.getScreenshot();
                   this.setState({ screenshot });
-                 // this.props.onSave('camera', screenshot);
 
               };
 
@@ -40,14 +43,13 @@ class Camera extends React.Component {
                               screenshotFormat="image/jpeg"
                               width={600}
                           />
-                            <RaisedButton onClick={(event) => {this.capture()}}>Capture photo</RaisedButton>
+                            <button style={styles.button} onClick={(event) => {this.capture()}}>Take photo</button>
 
                           {this.state.screenshot? <h1>Click finish if you are happy with this picture!</h1> : null}
                           {this.state.screenshot ? <img src={this.state.screenshot} /> : null}
 
-                        <RaisedButton style={styles.buttonContainer} onClick = {() => this.finish()}>
-                            <Link to='/finish'>Finish</Link>
-                        </RaisedButton>
+                            <Link style={styles.button} onClick = {() => this.finish()} to='/finish'>Finish</Link>
+
                       </div>
                   );
               }
@@ -59,7 +61,7 @@ export default Camera;
 
 const styles = {
     container: {
-        backgroundColor: '#67c2ff',
+        backgroundColor: '#E28989',
         display: 'flex',
         flex: 'none',
         alignItems: 'center',
@@ -70,7 +72,7 @@ const styles = {
     },
 
     scrollContainer: {
-        backgroundColor: '#67c2ff',
+        backgroundColor: '#E28989',
         display: 'flex',
         flex: 'none',
         flexFlow: 'column',
@@ -84,8 +86,18 @@ const styles = {
 
     },
 
-    buttonContainer: {
-        alignItems: 'baseline',
+    button: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#7ebaff',
+        color: '#FFF',
+        height: 50,
+        width: 150,
+        borderRadius: 25,
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontSize: 24,
         margin: 20
     }
 

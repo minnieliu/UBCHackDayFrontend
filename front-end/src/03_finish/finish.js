@@ -4,7 +4,12 @@ import check from './checks.png';
 import { RaisedButton } from 'material-ui';
 
 class Finish extends Component {
-  render() {
+
+    componentDidMount () {
+        window.scrollTo(0, 0)
+    }
+
+    render() {
     return (
       <div style={styles.container}>
        <h1>
@@ -12,9 +17,9 @@ class Finish extends Component {
            </h1>
           <img src={check} alt = "check"/>
           <h2>Check your email to see who you have matched with.</h2>
-          <RaisedButton style={styles.buttonContainer}>
-          <Link to='/'>Back to Start</Link>
-              </RaisedButton>
+
+          <Link style={styles.button}  to='/'>Start Again</Link>
+
 
       </div>
     );
@@ -25,7 +30,7 @@ export default Finish;
 
 const styles = {
     container: {
-        backgroundColor: '#67c2ff',
+        backgroundColor: '#b1f9eb',
         display: 'flex',
         flex: 'none',
         alignItems: 'center',
@@ -43,12 +48,21 @@ const styles = {
         margin: 0
 
     },
-    buttonContainer: {
-        alignItems: 'baseline',
-        margin: 20,
+
+    button: {
+        display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 20
+        backgroundColor: '#7ebaff',
+        color: '#FFF',
+        height: 50,
+        width: 150,
+        borderRadius: 25,
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        fontSize: 24,
+        margin: 20
     }
+
 
 }
