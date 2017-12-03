@@ -19,7 +19,7 @@ class Camera extends React.Component {
     }
               setRef = (webcam) => {
                   this.webcam = webcam;
-              }
+              };
 
               capture = () => {
                   const screenshot = this.webcam.getScreenshot();
@@ -29,8 +29,8 @@ class Camera extends React.Component {
 
               finish = () => {
                   this.props.onSave('camera', this.state.screenshot);
-
-              }
+                  setTimeout(this.props.handleSubmit, 0);
+              };
 
               render() {
                   return (
