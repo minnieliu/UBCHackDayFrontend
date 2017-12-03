@@ -101,9 +101,9 @@ const MOCK_ANSWERS2 = [
 ];
 
 const T_F_ANSWERS = [
-  {id: 0, text: 'TRUE'},
-  {id: 1, text: 'FALSE'},
-]
+  {id: 0, text: 'YES'},
+  {id: 1, text: 'NO'},
+];
 
 const SHORT_ANSWER = { text: 'example'};
 
