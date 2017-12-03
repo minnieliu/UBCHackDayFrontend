@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import peace from './peace-sign.png';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Intro extends Component {
@@ -8,9 +9,9 @@ class Intro extends Component {
   render() {
     return (
       <div style={styles.container}>
-        <h1 style={{color: '#FFF'}}>LOGO</h1>
-        <p style={{color: '#FFF', fontSize: 18, width: '50%', textAlign: 'center'}}>
-          Welcome to .... !
+          <img src={peace} alt = "peace"/>
+         <p style={{color: '#FFF', fontSize: 64, textAlign: 'center', fontWeight: 'bold'}}>
+          Welcome to Connect2!
         </p>
         <Link style={styles.button} to='/survey'>START!</Link>
       </div>

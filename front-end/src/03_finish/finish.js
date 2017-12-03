@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import check from './checks.png';
-import { RaisedButton } from 'material-ui';
+
 
 class Finish extends Component {
 
