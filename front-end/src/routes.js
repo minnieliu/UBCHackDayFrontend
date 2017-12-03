@@ -11,7 +11,7 @@ import $ from 'jquery';
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
 
-const makeblob = function (dataURL) {
+window.makeblob = function (dataURL) {
   var BASE64_MARKER = ';base64,';
   if (dataURL.indexOf(BASE64_MARKER) == -1) {
     var parts = dataURL.split(',');
@@ -21,10 +21,7 @@ const makeblob = function (dataURL) {
   }
   var parts = dataURL.split(BASE64_MARKER);
   var contentType = parts[0].split(':')[1];
-  // var raw = new Blob(dataURL, {type:"text/plain"});
-  
-  var raw = new Blob(parts[1], {type:"text/plain"});
-  // var raw = window.atob(parts[1]);
+  var raw = window.atob(parts[1]);
   var rawLength = raw.length;
 
   var uInt8Array = new Uint8Array(rawLength);
@@ -35,6 +32,7 @@ const makeblob = function (dataURL) {
 
   return new Blob([uInt8Array], { type: contentType });
 };
+
 
 
 export default class Routes extends Component {
@@ -55,17 +53,12 @@ export default class Routes extends Component {
   }
 
   handleSubmit() {
-    console.log('hello');
-    console.log('hello');
-    console.log('hello');
-    console.log('hello');
-    console.log('hello');
-    const str = 'data:image/jpeg;base64,' + this.state.camera;
+    const str = this.state.camera;
+
     const data = {
       ...this.state.survey,
-      imaqe: makeblob(str)
+      imaqe: window.makeblob(str)
     };
-    console.log(data);
     // $.ajax({
     //   url: 'https://api.projectoxford.ai/vision/v1/ocr?',
     //   type: 'POST',
