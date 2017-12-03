@@ -6,6 +6,10 @@ import { RaisedButton } from 'material-ui';
 
 class Camera extends React.Component {
 
+    componentDidMount () {
+        window.scrollTo(0, 0)
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -20,7 +24,6 @@ class Camera extends React.Component {
               capture = () => {
                   const screenshot = this.webcam.getScreenshot();
                   this.setState({ screenshot });
-                 // this.props.onSave('camera', screenshot);
 
               };
 
