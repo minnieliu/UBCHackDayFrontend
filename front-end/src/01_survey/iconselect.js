@@ -32,7 +32,7 @@ const Icon = ({item}) => {
   }
   else if (item.icon === 'study') {
     return (
-      <Casino style={styles.iconStyles}/>
+      <School style={styles.iconStyles}/>
     )
   }
 };
@@ -90,10 +90,12 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     flexDirection :'column',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    borderRadius: 5,
+    boxShadow: '0 0 5px grey'
   },
   selected: {
-    backgroundColor: 'red'
+    backgroundColor: '#ffa859'
   },
   iconStyles: {
     height: 100,

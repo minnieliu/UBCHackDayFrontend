@@ -9,12 +9,10 @@ class Intro extends Component {
     return (
       <div style={styles.container}>
         <h1 style={{color: '#FFF'}}>LOGO</h1>
-        <p style={{color: '#FFF', fontSize: 18, width: '50%'}}>
+        <p style={{color: '#FFF', fontSize: 18, width: '50%', textAlign: 'center'}}>
           Welcome to .... !
         </p>
-        {/*<RaisedButton style={styles.button}>*/}
         <Link style={styles.button} to='/survey'>START!</Link>
-        {/*</RaisedButton>*/}
       </div>
     );
   }
@@ -29,7 +27,7 @@ const styles = {
     flexFlow: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#72ff99'
+    backgroundColor: '#5ddc81'
   },
   button: {
     display: 'flex',
@@ -42,6 +40,7 @@ const styles = {
     borderRadius: 25,
     textDecoration: 'none',
     fontWeight: 'bold',
-    fontSize: 24
+    fontSize: 24,
+    boxShadow: '0 0 5px grey'
   }
 };
