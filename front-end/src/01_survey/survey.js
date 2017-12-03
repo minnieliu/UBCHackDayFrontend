@@ -4,6 +4,7 @@ import { Checkbox } from 'material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconSelect from './iconselect';
 import ShortInput from './shortinput';
+import Assignment from 'material-ui/svg-icons/action/assignment';
 
 const Panel = ({question, children, selected, onClick}) => (
   <div
@@ -121,8 +122,11 @@ class Survey extends Component {
     return (
       <div style={styles.container}>
         <div style={styles.scrollContainer}>
+          <Assignment style={styles.iconStyles}/>
           <h1>Tell us about you!</h1>
-          <h2 style={{width: '70%'}}>based on your answers, we will try to match you with someone who shares similar interests</h2>
+          <h2 style={{width: '70%', textAlign: 'center', marginBottom: 50}}>
+            based on your answers, we will try to match you with someone who shares similar interests
+          </h2>
 
           <Panel
             selected={this.state.currentQuestionId === 0}
@@ -193,9 +197,23 @@ class Survey extends Component {
             />
           </Panel>
 
-          <RaisedButton onClick={() => this.props.onSave('survey', this.state.responses)}>
-            <Link to='/camera'>Submit</Link>
-          </RaisedButton>
+
+          <div
+            style={{
+              width: '80%',
+              height: 150,
+              padding: '5% 20%',
+              backgroundColor:'#67c2ff'
+            }}>
+            <Link
+              onClick={() => this.props.onSave('survey', this.state.responses)}
+              to='/camera'
+              style={styles.button}
+            >
+              Submit
+            </Link>
+          </div>
+
         </div>
       </div>
     );
@@ -217,12 +235,33 @@ const styles = {
     flex: 'none',
     flexFlow: 'column',
     alignItems: 'center',
-    padding: '0 150px',
 
     color: '#FFF',
     height: 'min-content',
     minHeight: 1600,
     width: '100%',
+    padding: 0,
+    overflowX: 'hidden'
 
+  },
+  iconStyles: {
+    marginTop: 50,
+    height: 150,
+    width: 150,
+    color: '#FFF'
+  },
+  button: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#55e18a',
+    color: '#FFF',
+    height: 50,
+    width: 150,
+    borderRadius: 25,
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    fontSize: 24,
+    boxShadow: '0 0 5px grey'
   }
 };
