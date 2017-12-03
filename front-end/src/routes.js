@@ -59,6 +59,8 @@ export default class Routes extends Component {
       ...this.state.survey,
       imaqe: window.makeblob(str)
     };
+
+    // console.log(data);
     $.ajax({
       // url: 'https://localhost:1337/submit',
       url: 'https://connecttw2.herokuapp.com/submit',

@@ -137,11 +137,11 @@ class Survey extends Component {
           </h2>
 
           <Panel
-            selected={this.state.currentQuestionId === 0}
+            selected={this.state.currentQuestionId === 'name'}
             question='1. My name is:'
-            onClick={() => this.onSelectQuestion(0)}>
+            onClick={() => this.onSelectQuestion('name')}>
             <ShortInput
-              id={0}
+              id={'name'}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -149,22 +149,22 @@ class Survey extends Component {
 
 
           <Panel
-            selected={this.state.currentQuestionId === 1}
+            selected={this.state.currentQuestionId === 'email'}
             question='2. My email is:'
-            onClick={() => this.onSelectQuestion(1)}>
+            onClick={() => this.onSelectQuestion('email')}>
             <ShortInput
-              id={1}
+              id={'email'}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
           </Panel>
 
           <Panel
-            selected={this.state.currentQuestionId === 2}
+            selected={this.state.currentQuestionId === 'talk'}
             question='3. I want to talk about:'
-            onClick={() => this.onSelectQuestion(2)}>
+            onClick={() => this.onSelectQuestion('talk')}>
             <MultipleChoice
-              id={2}
+              id={'talk'}
               answers={MOCK_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
@@ -172,11 +172,11 @@ class Survey extends Component {
           </Panel>
 
           <Panel
-            selected={this.state.currentQuestionId === 3}
+            selected={this.state.currentQuestionId === 'connect'}
             question='4. I want to connect over:'
-            onClick={() => this.onSelectQuestion(3)}>
+            onClick={() => this.onSelectQuestion('connect')}>
             <IconSelect
-              id={3}
+              id={'connect'}
               answers={MOCK_ANSWERS2}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
@@ -184,11 +184,11 @@ class Survey extends Component {
           </Panel>
 
           <Panel
-            selected={this.state.currentQuestionId === 4}
+            selected={this.state.currentQuestionId === 'friends'}
             question='5. Do you find it difficult to make friends?:'
-            onClick={() => this.onSelectQuestion(4)}>
+            onClick={() => this.onSelectQuestion('friends')}>
             <MultipleChoice
-              id={4}
+              id={'friends'}
               answers={T_F_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
@@ -196,11 +196,11 @@ class Survey extends Component {
           </Panel>
 
           <Panel
-            selected={this.state.currentQuestionId === 5}
+            selected={this.state.currentQuestionId === 'marginalized'}
             question='6. Do you often feel marginalized in your community?'
-            onClick={() => this.onSelectQuestion(5)}>
+            onClick={() => this.onSelectQuestion('marginalized')}>
             <MultipleChoice
-              id={5}
+              id={'marginalized'}
               answers={T_F_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
