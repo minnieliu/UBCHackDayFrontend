@@ -59,23 +59,21 @@ export default class Routes extends Component {
       ...this.state.survey,
       imaqe: window.makeblob(str)
     };
-    // $.ajax({
-    //   url: 'https://api.projectoxford.ai/vision/v1/ocr?',
-    //   type: 'POST',
-    //   processData: false,
-    //   contentType: 'application/octet-stream',
-    //   data: {
-    //     survey: this.state.survey,
-    //     camera: makeblob('data:image/jpeg;base64,' + this.state.camera)
-    //   }
-    //   // data: makeblob('data:image/jpeg;base64,9j/4AAQSkZJRgA..........gAooooAKKKKACiiigD//Z')
-    // })
-    //   .done(function(data) {
-    //     alert("success");
-    //   })
-    //   .fail(function() {
-    //     alert("error");
-    //   });
+    $.ajax({
+      url: 'https://connecttw2.herokuapp.com/submit',
+      type: 'POST',
+      processData: false,
+      contentType: 'application/json',
+      // contentType: 'application/octet-stream',
+      data: data
+      // data: makeblob('data:image/jpeg;base64,9j/4AAQSkZJRgA..........gAooooAKKKKACiiigD//Z')
+    })
+      .done(function(data) {
+        alert("success");
+      })
+      .fail(function() {
+        alert("error");
+      });
   }
 
   render() {
