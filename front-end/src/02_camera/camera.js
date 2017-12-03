@@ -35,7 +35,7 @@ class Camera extends React.Component {
               render() {
                   return (
                       <div style={styles.scrollContainer}>
-                          <h1>Take a picture of how you're feeling!</h1>
+                          <h1>Take a picture reflecting how you're feeling!</h1>
                           <Webcam
                               audio={false}
                               height={600}

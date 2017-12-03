@@ -96,7 +96,15 @@ const MOCK_ANSWERS2 = [
   {id: 2, text: 'Club Event', icon: 'club'},
   {id: 3, text: 'Board Games', icon: 'boardgames'},
   {id: 4, text: 'Study Group', icon: 'study'}
+
+
 ];
+
+const T_F_ANSWERS = [
+  {id: 0, text: 'TRUE'},
+  {id: 1, text: 'FALSE'},
+]
+
 const SHORT_ANSWER = { text: 'example'};
 
 class Survey extends Component {
@@ -165,7 +173,7 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 3}
-            question='2. I want to connect over:'
+            question='4. I want to connect over:'
             onClick={() => this.onSelectQuestion(3)}>
             <IconSelect
               id={3}
@@ -177,10 +185,11 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 4}
-            question='3. I am good at:'
+            question='5. Do you find it difficult to make friends?:'
             onClick={() => this.onSelectQuestion(4)}>
-            <ShortInput
+            <MultipleChoice
               id={4}
+              answers={T_F_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
@@ -188,10 +197,11 @@ class Survey extends Component {
 
           <Panel
             selected={this.state.currentQuestionId === 5}
-            question='4. I am good at:'
+            question='6. Do you often feel marginalized in your community?'
             onClick={() => this.onSelectQuestion(5)}>
-            <ShortInput
+            <MultipleChoice
               id={5}
+              answers={T_F_ANSWERS}
               registerSelection={this.registerSelection}
               onSelectQuestion={this.onSelectQuestion}
             />
