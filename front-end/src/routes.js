@@ -11,27 +11,27 @@ import $ from 'jquery';
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
 
-window.makeblob = function (dataURL) {
-  var BASE64_MARKER = ';base64,';
-  if (dataURL.indexOf(BASE64_MARKER) == -1) {
-    var parts = dataURL.split(',');
-    var contentType = parts[0].split(':')[1];
-    var raw = decodeURIComponent(parts[1]);
-    return new Blob([raw], { type: contentType });
-  }
-  var parts = dataURL.split(BASE64_MARKER);
-  var contentType = parts[0].split(':')[1];
-  var raw = window.atob(parts[1]);
-  var rawLength = raw.length;
-
-  var uInt8Array = new Uint8Array(rawLength);
-
-  for (var i = 0; i < rawLength; ++i) {
-    uInt8Array[i] = raw.charCodeAt(i);
-  }
-
-  return new Blob([uInt8Array], { type: contentType });
-};
+// window.makeblob = function (dataURL) {
+//   var BASE64_MARKER = ';base64,';
+//   if (dataURL.indexOf(BASE64_MARKER) == -1) {
+//     var parts = dataURL.split(',');
+//     var contentType = parts[0].split(':')[1];
+//     var raw = decodeURIComponent(parts[1]);
+//     return new Blob([raw], { type: contentType });
+//   }
+//   var parts = dataURL.split(BASE64_MARKER);
+//   var contentType = parts[0].split(':')[1];
+//   var raw = window.atob(parts[1]);
+//   var rawLength = raw.length;
+//
+//   var uInt8Array = new Uint8Array(rawLength);
+//
+//   for (var i = 0; i < rawLength; ++i) {
+//     uInt8Array[i] = raw.charCodeAt(i);
+//   }
+//
+//   return new Blob([uInt8Array], { type: contentType });
+// };
 
 
 
@@ -44,7 +44,29 @@ export default class Routes extends Component {
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.makeblob = this.makeblob.bind(this);
   }
+  makeblob (dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      var raw = decodeURIComponent(parts[1]);
+      return new Blob([raw], { type: contentType });
+    }
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  };
 
   handleSave(key, item) {
     this.setState({
@@ -54,35 +76,33 @@ export default class Routes extends Component {
 
   handleSubmit() {
     const str = this.state.camera;
+    const str2 = this.makeblob(str);
 
-    const data = {
-      ...this.state.survey,
-      imaqe: window.makeblob(str)
-    };
+    const data = Object.assign({}, this.state.survey, { image: str2 });
 
-    // console.log(data);
-    $.ajax({
-      // url: 'https://localhost:1337/submit',
-      url: 'https://connecttw2.herokuapp.com/submit',
-      type: 'POST',
-      processData: false,
-      // headers: {
-      //   'Access-Control-Allow-Origin': 'https://connecttw2.herokuapp.com/',
-      //   'Access-Control-Allow-Credentials': true,
-      // },
-      contentType: 'application/json',
-      // contentType: 'application/octet-stream',
-      data: JSON.stringify(data)
-      // data: makeblob('data:image/jpeg;base64,9j/4AAQSkZJRgA..........gAooooAKKKKACiiigD//Z')
-    })
-      .done(function(data) {
-        console.log("success");
-        // alert("success");
+      $.ajax({
+        // url: 'https://localhost:1337/submit',
+        url: 'https://connecttw2.herokuapp.com/submit',
+        type: 'POST',
+        processData: false,
+        // headers: {
+        //   'Access-Control-Allow-Origin': 'https://connecttw2.herokuapp.com/',
+        //   'Access-Control-Allow-Credentials': true,
+        // },
+        contentType: 'application/json',
+        // contentType: 'application/octet-stream',
+        data: JSON.stringify(data)
+        // data: makeblob('data:image/jpeg;base64,9j/4AAQSkZJRgA..........gAooooAKKKKACiiigD//Z')
       })
-      .fail(function() {
-        alert("error");
-      });
+        .done(function(data) {
+          console.log("success");
+          // alert("success");
+        })
+        .fail(function() {
+          alert("error");
+        });
   }
+
 
   render() {
     return (
