@@ -60,16 +60,22 @@ export default class Routes extends Component {
       imaqe: window.makeblob(str)
     };
     $.ajax({
+      // url: 'https://localhost:1337/submit',
       url: 'https://connecttw2.herokuapp.com/submit',
       type: 'POST',
       processData: false,
+      // headers: {
+      //   'Access-Control-Allow-Origin': 'https://connecttw2.herokuapp.com/',
+      //   'Access-Control-Allow-Credentials': true,
+      // },
       contentType: 'application/json',
       // contentType: 'application/octet-stream',
-      data: data
+      data: JSON.stringify(data)
       // data: makeblob('data:image/jpeg;base64,9j/4AAQSkZJRgA..........gAooooAKKKKACiiigD//Z')
     })
       .done(function(data) {
-        alert("success");
+        console.log("success");
+        // alert("success");
       })
       .fail(function() {
         alert("error");
